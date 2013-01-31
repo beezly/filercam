@@ -6,3 +6,5 @@ Make /still.jpg a cached copy of your content however you want. We used nginx as
 You could just drop a file there called still.jpg
 
 Good luck, and let's hope that orange LED turns off.
+
+The original live version of Filercam is at http://filercam.shef.ac.uk. 
