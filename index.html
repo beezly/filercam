@@ -6,6 +6,12 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <style>
       .row { text-align: center; }
+      #filercam-image-container {
+        width:640px;
+        margin:0 auto;
+        background:#000;
+        overflow:hidden;
+      }
     </style>
   </head>
   <body>
@@ -32,11 +38,14 @@
       <p class="lead">We've spotted an orange light...</p>
       <p class="lead">Our NetApp filer broke and we replaced some parts. When we turned it back on, it had an orange light on it. We don't know what the orange light means, but maybe if we keep watching it, it will go away.</p>
     <div class="span12 pagination-centered">
-      <p><img id="filercam-image" src="/overlay.gif" style="background-image: url('/still.jpg');" alt="The Orange LED" height="480" width="640" /></p>
+      <div id='filercam-image-container'>
+        <img id="filercam-image" src="/overlay.gif" style="background-image: url('/still.jpg');" alt="The Orange LED" height="480" width="640" />
+      </div>
     </div>
       <p class="lead">Brought to you by <a href="http://twitter.com/tom_griffin">@tom_griffin</a> (switch config and firewall), <a href="http://twitter.com/tim_parkinson">@tim_parkinson</a> (somehow made the orange light turn on and plugged in the webcam) and <a href="http://twitter.com/beezly">@beezly</a> (web server/reverse caching proxy, html, "graphics designer" and nasty javascript).</p>
       <p>Updates every few seconds. Works in most browsers, but we didn't bother to test IE.</p>
       <script src="http://code.jquery.com/jquery-latest.js"></script>
+      <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
       <script src="js/bootstrap.min.js"></script>
       <script>
         function updateImage() {
@@ -47,7 +56,12 @@
         preLoad.addEventListener("load", function() { document.getElementById("filercam-image").style.backgroundImage = "url('/still.jpg?time=" + theDate + "')"; } );
       }
 
+      function quake() {
+        $('#filercam-image').effect('shake', {times: 50}, 5000);
+      }
+
       setInterval(updateImage, 1000);
+      setTimeout(quake, Math.random() * 60000);
       </script>
     </div>
 <script type="text/javascript">
